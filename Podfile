@@ -7,5 +7,5 @@ target 'Marketplace' do
 
   # Pods for Marketplace
     pod 'Firebase/Core'
-
+    pod 'Firebase/Database’
 end

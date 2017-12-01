@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A4D3C9F1FD1FE7900A0C631 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D7C99A91FD0DD8B00A8E956 /* GoogleService-Info.plist */; };
+		5A4D3CA11FD1FEB200A0C631 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D3CA01FD1FEB200A0C631 /* LoginViewController.swift */; };
 		5C3D28C8084B53BC180E4A36 /* Pods_Marketplace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E446CFAD3F1EC2D2510E2EFD /* Pods_Marketplace.framework */; };
 		9B4CE32D1FCE2E0A00D7D7E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CE32C1FCE2E0A00D7D7E7 /* AppDelegate.swift */; };
 		9B4CE32F1FCE2E0A00D7D7E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CE32E1FCE2E0A00D7D7E7 /* ViewController.swift */; };
@@ -16,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A4D3CA01FD1FEB200A0C631 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9B425B5F3B6A31697AC1C12A /* Pods-Marketplace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketplace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marketplace/Pods-Marketplace.debug.xcconfig"; sourceTree = "<group>"; };
 		9B4CE3291FCE2E0900D7D7E7 /* Marketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4CE32C1FCE2E0A00D7D7E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 				9D7C99A91FD0DD8B00A8E956 /* GoogleService-Info.plist */,
 				9B4CE3351FCE2E0A00D7D7E7 /* LaunchScreen.storyboard */,
 				9B4CE3381FCE2E0A00D7D7E7 /* Info.plist */,
+				5A4D3CA01FD1FEB200A0C631 /* LoginViewController.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -153,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4CE3371FCE2E0A00D7D7E7 /* LaunchScreen.storyboard in Resources */,
+				5A4D3C9F1FD1FE7900A0C631 /* GoogleService-Info.plist in Resources */,
 				9B4CE3341FCE2E0A00D7D7E7 /* Assets.xcassets in Resources */,
 				9B4CE3321FCE2E0A00D7D7E7 /* Main.storyboard in Resources */,
 			);
@@ -169,11 +174,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Marketplace/Pods-Marketplace-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4D3CA11FD1FEB200A0C631 /* LoginViewController.swift in Sources */,
 				9B4CE32F1FCE2E0A00D7D7E7 /* ViewController.swift in Sources */,
 				9B4CE32D1FCE2E0A00D7D7E7 /* AppDelegate.swift in Sources */,
 			);
