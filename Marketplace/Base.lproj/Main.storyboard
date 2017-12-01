@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,59 +57,6 @@
             <point key="canvasLocation" x="-1775" y="-356"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="dzu-kX-fdk">
-            <objects>
-                <viewController id="dQc-zb-EtK" customClass="ViewController" customModule="Marketplace" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sJX-Eo-pl6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="s3a-Cr-KAl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdZ-PZ-QQa">
-                                <rect key="frame" x="58" y="318" width="258" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="View Listings">
-                                    <color key="titleColor" red="0.99217218650000005" green="0.98605522170000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="bYX-Gm-YHr">
-                                <rect key="frame" x="122" y="108" width="130" height="130"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtK-13-w0X">
-                                <rect key="frame" x="58" y="261" width="258" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Add Listing">
-                                    <color key="titleColor" red="0.99217218650000005" green="0.98605522170000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-pu-XSt">
-                                <rect key="frame" x="166" y="60" width="42" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="s3a-Cr-KAl" firstAttribute="trailing" secondItem="AeV-gd-8p9" secondAttribute="trailing" id="0o1-1p-goE"/>
-                            <constraint firstItem="bYX-Gm-YHr" firstAttribute="centerX" secondItem="sJX-Eo-pl6" secondAttribute="centerX" id="4Ti-qt-vg0"/>
-                            <constraint firstItem="s3a-Cr-KAl" firstAttribute="bottom" secondItem="AeV-gd-8p9" secondAttribute="bottom" id="9Zw-3u-9ka"/>
-                            <constraint firstItem="s3a-Cr-KAl" firstAttribute="top" secondItem="sJX-Eo-pl6" secondAttribute="top" id="9gV-ns-bON"/>
-                            <constraint firstItem="s3a-Cr-KAl" firstAttribute="leading" secondItem="AeV-gd-8p9" secondAttribute="leading" id="BvD-K8-937"/>
-                            <constraint firstItem="TtK-13-w0X" firstAttribute="centerX" secondItem="sJX-Eo-pl6" secondAttribute="centerX" id="XPv-Lq-02u"/>
-                            <constraint firstItem="zdZ-PZ-QQa" firstAttribute="centerX" secondItem="sJX-Eo-pl6" secondAttribute="centerX" id="yPB-il-Z3K"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="AeV-gd-8p9"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LtT-f9-M7X" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="54" y="1442"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="MGd-mw-UwF">
             <objects>
                 <viewController id="drm-nh-i6R" sceneMemberID="viewController">
@@ -129,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFr-gt-UDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="817" y="1442"/>
+            <point key="canvasLocation" x="1572" y="713"/>
         </scene>
         <!--Messages-->
         <scene sceneID="AvW-l3-mwV">
@@ -239,10 +185,32 @@
                     <view key="view" contentMode="scaleToFill" id="uhW-SA-gXg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-qI-k12">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-1" translatesAutoresizingMaskIntoConstraints="NO" id="M2B-k3-5XB">
+                                <rect key="frame" x="0.0" y="64" width="125" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="Jlm-d3-tbt"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="125" id="hjT-U0-38N"/>
+                                    <constraint firstAttribute="height" constant="125" id="hnW-5g-8X0"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="125" id="oFL-EL-BcH"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M2B-k3-5XB" firstAttribute="top" secondItem="3LR-yb-9Jb" secondAttribute="top" id="O2G-SW-VID"/>
+                            <constraint firstItem="M2B-k3-5XB" firstAttribute="leading" secondItem="3LR-yb-9Jb" secondAttribute="leading" id="tVB-33-nJ8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3LR-yb-9Jb"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="1JT-GY-lcU"/>
+                    <connections>
+                        <segue destination="drm-nh-i6R" kind="show" id="VXz-Ab-9Xx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yO-sz-oTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
