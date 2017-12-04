@@ -18,7 +18,9 @@ class LoginViewController: UIViewController {
         let profilesRef = Database.database().reference(withPath: "profiles")
         let currentUserRef = Database.database().reference(withPath: "currentUser")
         if (email.text?.contains("@uw.edu"))! {
-            profilesRef.childByAutoId().child("email").setValue(email.text)
+            let idx = email.text?.index(of: "@")
+            profilesRef.child((email.text?.substring(to: idx!))!).child("email").setValue(email.text)
+            //profilesRef.childByAutoId().child("email").setValue(email.text)
             currentUserRef.child("email").setValue(email.text)
             email.text = ""
             self.performSegue(withIdentifier: "loginSegue", sender: self)
