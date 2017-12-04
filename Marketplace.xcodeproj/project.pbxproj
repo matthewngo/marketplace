@@ -16,6 +16,7 @@
 		9B4CE3321FCE2E0A00D7D7E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CE3301FCE2E0A00D7D7E7 /* Main.storyboard */; };
 		9B4CE3341FCE2E0A00D7D7E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CE3331FCE2E0A00D7D7E7 /* Assets.xcassets */; };
 		9B4CE3371FCE2E0A00D7D7E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CE3351FCE2E0A00D7D7E7 /* LaunchScreen.storyboard */; };
+		9BB9F38C1FD4C182001AACD7 /* ListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9F38B1FD4C182001AACD7 /* ListingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +30,8 @@
 		9B4CE3331FCE2E0A00D7D7E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B4CE3361FCE2E0A00D7D7E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B4CE3381FCE2E0A00D7D7E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D7C99A91FD0DD8B00A8E956 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BB9F38B1FD4C182001AACD7 /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
+		9D7C99A91FD0DD8B00A8E956 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8D147BB96132D283931FFF6 /* Pods-Marketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketplace.release.xcconfig"; path = "Pods/Target Support Files/Pods-Marketplace/Pods-Marketplace.release.xcconfig"; sourceTree = "<group>"; };
 		E446CFAD3F1EC2D2510E2EFD /* Pods_Marketplace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marketplace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 				9B4CE3381FCE2E0A00D7D7E7 /* Info.plist */,
 				5A4D3CA01FD1FEB200A0C631 /* LoginViewController.swift */,
 				5A4D3CA21FD201CD00A0C631 /* AddItemViewController.swift */,
+				9BB9F38B1FD4C182001AACD7 /* ListingsViewController.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				5A4D3CA31FD201CD00A0C631 /* AddItemViewController.swift in Sources */,
 				9B4CE32F1FCE2E0A00D7D7E7 /* ViewController.swift in Sources */,
 				9B4CE32D1FCE2E0A00D7D7E7 /* AppDelegate.swift in Sources */,
+				9BB9F38C1FD4C182001AACD7 /* ListingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
