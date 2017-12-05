@@ -17,7 +17,6 @@
 		9B4CE3341FCE2E0A00D7D7E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CE3331FCE2E0A00D7D7E7 /* Assets.xcassets */; };
 		9B4CE3371FCE2E0A00D7D7E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CE3351FCE2E0A00D7D7E7 /* LaunchScreen.storyboard */; };
 		9BB9F38C1FD4C182001AACD7 /* ListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB9F38B1FD4C182001AACD7 /* ListingsViewController.swift */; };
-		9D730F0E1FD54272000F7511 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D730F0D1FD54272000F7511 /* EditViewController.swift */; };
 		9D730F101FD5438F000F7511 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D730F0F1FD5438F000F7511 /* ProfileViewController.swift */; };
 		9D730F121FD743FB000F7511 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D730F111FD743FB000F7511 /* ProfileEditViewController.swift */; };
 /* End PBXBuildFile section */
@@ -25,7 +24,7 @@
 /* Begin PBXFileReference section */
 		5A4D3CA01FD1FEB200A0C631 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5A4D3CA21FD201CD00A0C631 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
-		5AEEE18F1FD51978000847AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5AEEE18F1FD51978000847AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9B425B5F3B6A31697AC1C12A /* Pods-Marketplace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketplace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marketplace/Pods-Marketplace.debug.xcconfig"; sourceTree = "<group>"; };
 		9B4CE3291FCE2E0900D7D7E7 /* Marketplace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marketplace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4CE32C1FCE2E0A00D7D7E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +34,6 @@
 		9B4CE3361FCE2E0A00D7D7E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B4CE3381FCE2E0A00D7D7E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BB9F38B1FD4C182001AACD7 /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
-		9D730F0D1FD54272000F7511 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9D730F0F1FD5438F000F7511 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9D730F111FD743FB000F7511 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		C8D147BB96132D283931FFF6 /* Pods-Marketplace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marketplace.release.xcconfig"; path = "Pods/Target Support Files/Pods-Marketplace/Pods-Marketplace.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 				5A4D3CA01FD1FEB200A0C631 /* LoginViewController.swift */,
 				5A4D3CA21FD201CD00A0C631 /* AddItemViewController.swift */,
 				9D730F0F1FD5438F000F7511 /* ProfileViewController.swift */,
-				9D730F0D1FD54272000F7511 /* EditViewController.swift */,
 				9D730F111FD743FB000F7511 /* ProfileEditViewController.swift */,
 				9BB9F38B1FD4C182001AACD7 /* ListingsViewController.swift */,
 			);
@@ -246,7 +243,6 @@
 				9D730F121FD743FB000F7511 /* ProfileEditViewController.swift in Sources */,
 				5A4D3CA11FD1FEB200A0C631 /* LoginViewController.swift in Sources */,
 				5A4D3CA31FD201CD00A0C631 /* AddItemViewController.swift in Sources */,
-				9D730F0E1FD54272000F7511 /* EditViewController.swift in Sources */,
 				9B4CE32F1FCE2E0A00D7D7E7 /* ViewController.swift in Sources */,
 				9D730F101FD5438F000F7511 /* ProfileViewController.swift in Sources */,
 				9B4CE32D1FCE2E0A00D7D7E7 /* AppDelegate.swift in Sources */,

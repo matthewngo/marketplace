@@ -1,14 +1,14 @@
 //
-//  EditViewController.swift
+//  ListingsViewController.swift
 //  Marketplace
 //
-//  Created by iGuest on 12/4/17.
+//  Created by Matthew Ngo on 12/3/17.
 //  Copyright © 2017 Matthew Ngo. All rights reserved.
 //
 
 import UIKit
 
-class EditViewController: UIViewController {
+class ListingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,12 +16,6 @@ class EditViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var submit: UIButton!
-    @IBOutlet weak var about: UITextField!
-    
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
