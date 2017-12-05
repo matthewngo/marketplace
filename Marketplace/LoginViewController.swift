@@ -25,6 +25,9 @@ class LoginViewController: UIViewController {
             email.text = ""
             self.performSegue(withIdentifier: "loginSegue", sender: self)
         }
+        
+        //testing get data from firebase
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

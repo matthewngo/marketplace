@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListingsViewController: UIViewController {
+class ListingsViewController: UIViewController,  UIPopoverPresentationControllerDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,18 @@ class ListingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "PopoverSegue") {
+            //print(table)
+            let popover = segue.destination
+            popover.modalPresentationStyle = UIModalPresentationStyle.popover
+            popover.popoverPresentationController?.delegate = self
+        }
+    }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
 
     /*
     // MARK: - Navigation
