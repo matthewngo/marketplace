@@ -32,7 +32,9 @@ class ProfileViewController: UIViewController {
         })
     }
     
-    
+    @IBAction func unwindToProfile(segue:UIStoryboardSegue) {
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
