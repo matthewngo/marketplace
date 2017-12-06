@@ -55,6 +55,10 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         return itemCount    
     }
     
+    @IBAction func unwindToListings(segue:UIStoryboardSegue) {
+        NSLog("Listings")
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("pleaseworkIjustwanttogosleep")
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
