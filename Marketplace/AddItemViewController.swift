@@ -41,6 +41,7 @@ class AddItemViewController: UITableViewController {
         } else {
             on = false
         }
+       
         item.child("title").setValue(titleField.text)
         checkCondition()
         item.child("condition").setValue(itemCondition)
