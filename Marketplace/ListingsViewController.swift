@@ -29,7 +29,6 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             if let userName = snapshot.value as? [String:Any] {
                 self.items = userName["items"] as? [String: Any]
                 self.itemCount = self.items!.count
-                print(self.itemCount)
                 for key in self.items!.keys {
                     //print(key)
                     self.descriptions = self.items![key] as? [String:Any]
@@ -42,7 +41,6 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         })
         tableView.delegate = self
         tableView.dataSource = self
-        print("Count: \(itemCount)")
         // Do any additional setup after loading the view.
     }
 
@@ -52,11 +50,10 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemCount    
+        return itemCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("pleaseworkIjustwanttogosleep")
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
         var iter = items!.keys.makeIterator()
         var next:String = ""
@@ -66,7 +63,8 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         descriptions = items![next] as? [String:Any]
         //print(descriptions!["title"]! as? String)
         cell.textLabel!.text = descriptions!["title"]! as? String
-        //cell.detailTextLabel?.text = map[indexPath.row]["desc"]! as? String
+        let details: String = (descriptions!["price"]! as? String)!
+        cell.detailTextLabel?.text = "$\(details)"
         //cell.imageView?.image = image[indexPath.row]
         return cell
     }
