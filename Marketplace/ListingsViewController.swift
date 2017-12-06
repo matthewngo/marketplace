@@ -8,9 +8,14 @@
 import Firebase
 import UIKit
 
-class ListingsViewController: UIViewController,  UIPopoverPresentationControllerDelegate{
+class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
 
     var ref: DatabaseReference?
+    var itemCount: Int = 0
+    var items: [String:Any]?
+    var descriptions: [String:Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +27,50 @@ class ListingsViewController: UIViewController,  UIPopoverPresentationController
             //print(snapshot)
             
             if let userName = snapshot.value as? [String:Any] {
-                print(userName)
+                self.items = userName["items"] as? [String: Any]
+                self.itemCount = self.items!.count
+                print(self.itemCount)
+                for key in self.items!.keys {
+                    //print(key)
+                    self.descriptions = self.items![key] as? [String:Any]
+                    //print(self.descriptions!)
+                }
             }
             
             // can also use
             // snapshot.childSnapshotForPath("full_name").value as! String
         })
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        print("Count: \(itemCount)")
         // Do any additional setup after loading the view.
     }
 
+    // Workaround for ViewDidLoad after TableView
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return itemCount    
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("pleaseworkIjustwanttogosleep")
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        var iter = items!.keys.makeIterator()
+        var next:String = ""
+        for _ in 0 ... indexPath.row {
+            next = iter.next()!
+        }
+        descriptions = items![next] as? [String:Any]
+        //print(descriptions!["title"]! as? String)
+        cell.textLabel!.text = descriptions!["title"]! as? String
+        //cell.detailTextLabel?.text = map[indexPath.row]["desc"]! as? String
+        //cell.imageView?.image = image[indexPath.row]
+        return cell
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

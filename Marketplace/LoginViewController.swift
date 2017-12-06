@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
             //print(snapshot)
             
             if let userName = snapshot.value as? [String:Any] {
-                print(userName)
+                //print(userName)
             }
             
             // can also use
