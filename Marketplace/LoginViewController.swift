@@ -27,7 +27,19 @@ class LoginViewController: UIViewController {
         }
         
         //testing get data from firebase
-        
+        ref?.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if !snapshot.exists() { return } // not necessary
+            
+            //print(snapshot)
+            
+            if let userName = snapshot.value as? [String:Any] {
+                print(userName)
+            }
+            
+            // can also use
+            // snapshot.childSnapshotForPath("full_name").value as! String
+        })
     }
     override func viewDidLoad() {
         super.viewDidLoad()

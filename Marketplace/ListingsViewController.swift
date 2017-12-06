@@ -5,13 +5,29 @@
 //  Created by Matthew Ngo on 12/3/17.
 //  Copyright © 2017 Matthew Ngo. All rights reserved.
 //
-
+import Firebase
 import UIKit
 
 class ListingsViewController: UIViewController,  UIPopoverPresentationControllerDelegate{
 
+    var ref: DatabaseReference?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
+        ref?.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if !snapshot.exists() { return } // not necessary
+            
+            //print(snapshot)
+            
+            if let userName = snapshot.value as? [String:Any] {
+                print(userName)
+            }
+            
+            // can also use
+            // snapshot.childSnapshotForPath("full_name").value as! String
+        })
 
         // Do any additional setup after loading the view.
     }
