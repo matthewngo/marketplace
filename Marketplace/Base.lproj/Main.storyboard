@@ -341,17 +341,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7N0-uh-dWa">
-                                                    <rect key="frame" x="137" y="9" width="100" height="100"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0A-3G-7LR">
+                                                    <rect key="frame" x="137.5" y="9.5" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="KfI-e2-MGw"/>
-                                                        <constraint firstAttribute="height" constant="100" id="mGq-dK-fbh"/>
+                                                        <constraint firstAttribute="height" constant="100" id="Jcz-2g-Ujv"/>
+                                                        <constraint firstAttribute="width" constant="100" id="zDA-Wa-axO"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" image="Camera"/>
+                                                    <connections>
+                                                        <action selector="imgPressed:" destination="Ziq-Dg-xtv" eventType="touchUpInside" id="ncp-4b-OIo"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7N0-uh-dWa" firstAttribute="centerY" secondItem="lLv-FT-H2T" secondAttribute="centerY" id="q2N-rc-ONC"/>
-                                                <constraint firstItem="7N0-uh-dWa" firstAttribute="centerX" secondItem="lLv-FT-H2T" secondAttribute="centerX" id="xp7-58-Fm1"/>
+                                                <constraint firstItem="E0A-3G-7LR" firstAttribute="centerX" secondItem="lLv-FT-H2T" secondAttribute="centerX" id="a5f-ta-Gul"/>
+                                                <constraint firstItem="E0A-3G-7LR" firstAttribute="centerY" secondItem="lLv-FT-H2T" secondAttribute="centerY" id="xVT-18-Qlx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -634,6 +638,7 @@
                         <outlet property="bestOfferSwitch" destination="9Xl-Qb-hL6" id="Eau-9F-qhF"/>
                         <outlet property="commentField" destination="HCt-DN-SEX" id="UCb-66-NpF"/>
                         <outlet property="descriptionField" destination="aB2-Np-zHT" id="MVv-PD-MII"/>
+                        <outlet property="itemImage" destination="E0A-3G-7LR" id="zGd-F0-3ec"/>
                         <outlet property="price" destination="Fd5-x2-OiB" id="ToX-1w-AYy"/>
                         <outlet property="segmentedControl" destination="aQK-Ds-WTY" id="WGp-jV-Dme"/>
                         <outlet property="titleField" destination="vLp-A9-IG1" id="PKO-p7-BBD"/>
@@ -713,7 +718,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="35m-sD-YWn">
-                                <rect key="frame" x="0.0" y="209" width="375" height="409"/>
+                                <rect key="frame" x="0.0" y="119" width="375" height="499"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="6ye-sJ-9MY">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="409"/>
@@ -755,22 +760,22 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="QHR-CO-3ss">
-                                <rect key="frame" x="145" y="94" width="210" height="90"/>
+                                <rect key="frame" x="145" y="94" width="210" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAX-fA-AaG">
-                                        <rect key="frame" x="0.0" y="0.0" width="210" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.97804109380000004" green="0.97670762519999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Year " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RN3-B4-REl">
-                                        <rect key="frame" x="0.0" y="30" width="210" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3rr-TI-b5y">
-                                        <rect key="frame" x="0.0" y="60" width="210" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.97804109380000004" green="0.97670762519999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -938,6 +943,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Camera" width="101" height="101"/>
         <image name="Image" width="750" height="1334"/>
         <image name="listings_icon" width="15" height="11"/>
         <image name="messages_icon" width="19" height="17"/>

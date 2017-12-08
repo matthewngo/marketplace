@@ -8,10 +8,14 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
-class AddItemViewController: UITableViewController {
+class AddItemViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var ref: DatabaseReference?
+    var seller: String?
+    var downloadURL: URL?
     
+    @IBOutlet weak var itemImage: UIButton!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var commentField: UITextField!
@@ -41,7 +45,14 @@ class AddItemViewController: UITableViewController {
         } else {
             on = false
         }
-       
+        ref?.observeSingleEvent(of: .value, with: { snapshot in
+            if !snapshot.exists() { return }
+            if let userName = snapshot.value as? [String:Any] {
+                let user = userName["currentUser"] as? [String:Any]
+                let currentUser = user!["email"] as! String
+                item.child("email").setValue(currentUser)
+            }
+        })
         item.child("title").setValue(titleField.text)
         checkCondition()
         item.child("condition").setValue(itemCondition)
@@ -49,8 +60,9 @@ class AddItemViewController: UITableViewController {
         item.child("price").setValue(price.text)
         item.child("bestOffer").setValue(on)
         item.child("description").setValue(descriptionField.text)
+        item.child("imageURL").setValue(downloadURL?.absoluteString)
     }
-    
+
     func checkCondition() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -63,6 +75,46 @@ class AddItemViewController: UITableViewController {
             itemCondition = "N/A"
         default:
             NSLog("Error")
+        }
+    }
+    @IBAction func imgPressed(_ sender: Any) {
+        if !UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            print("Photo Library is not available")
+            return
+        } else {
+            let imgPicker = UIImagePickerController()
+            imgPicker.delegate = (self as UIImagePickerControllerDelegate & UINavigationControllerDelegate)
+            imgPicker.sourceType = .photoLibrary
+            imgPicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            imgPicker.allowsEditing = false
+            self.present(imgPicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let img = info[UIImagePickerControllerOriginalImage] {
+            itemImage.setImage(img as? UIImage, for: UIControlState.normal)
+        }
+        picker.dismiss(animated: true, completion: nil)
+        uploadImage()
+    }
+    
+    func uploadImage() {
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let imageData = UIImageJPEGRepresentation((itemImage.imageView?.image)!, 0.1)
+        let imageRef = storageRef.child("myImage.jpg")
+        let uploadTask = imageRef.putData(imageData!, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            self.downloadURL = metadata.downloadURL()!
+            print(self.downloadURL!)
         }
     }
     /*
