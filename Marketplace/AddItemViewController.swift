@@ -98,6 +98,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let img = info[UIImagePickerControllerOriginalImage] {
             itemImage.setImage(img as? UIImage, for: UIControlState.normal)
+            itemImage.imageView?.contentMode = UIViewContentMode.scaleAspectFit;
         }
         picker.dismiss(animated: true, completion: nil)
         uploadImage()
@@ -106,8 +107,9 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     func uploadImage() {
         let storage = Storage.storage()
         let storageRef = storage.reference()
+        let imgName = NSUUID().uuidString
         let imageData = UIImageJPEGRepresentation((itemImage.imageView?.image)!, 0.1)
-        let imageRef = storageRef.child("myImage.jpg")
+        let imageRef = storageRef.child("\(imgName).jpg")
         let uploadTask = imageRef.putData(imageData!, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 // Uh-oh, an error occurred!
