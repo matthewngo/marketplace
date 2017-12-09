@@ -87,6 +87,18 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             popover.modalPresentationStyle = UIModalPresentationStyle.popover
             popover.popoverPresentationController?.delegate = self
         }
+        if (segue.identifier == "itemView") {
+            let controller = segue.destination as! ItemViewController
+            let currentPath = self.tableView.indexPathForSelectedRow!
+            print(currentPath[1])
+            self.items!.forEach { print($1) }
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "itemView", sender:self)
+        
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
