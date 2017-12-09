@@ -15,6 +15,15 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     var seller: String?
     var downloadURL: URL?
     
+    @IBOutlet weak var booksCategory: UITableViewCell!
+    @IBOutlet weak var clothingCategory: UITableViewCell!
+    @IBOutlet weak var furnitureCategory: UITableViewCell!
+    @IBOutlet weak var techCategory: UITableViewCell!
+    @IBOutlet weak var ticketCategory: UITableViewCell!
+    @IBOutlet weak var otherCategory: UITableViewCell!
+    var categoryArray: [UITableViewCell] = []
+ 
+    
     @IBOutlet weak var itemImage: UIButton!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -27,7 +36,16 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        booksCategory.accessoryType = .none
+        clothingCategory.accessoryType = .none
+        furnitureCategory.accessoryType = .none
+        techCategory.accessoryType = .none
+        ticketCategory.accessoryType = .none
+        otherCategory.accessoryType = .none
+        categoryArray = [booksCategory, clothingCategory, furnitureCategory, techCategory, ticketCategory, otherCategory]
+        
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,6 +137,23 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
             print(self.downloadURL!)
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currCategory = categoryArray[indexPath.row]
+        if currCategory.accessoryType == .none {
+            currCategory.accessoryType = .checkmark
+            for category in categoryArray {
+                if category != currCategory {
+                    category.accessoryType = .none
+                }
+            }
+        } else {
+            currCategory.accessoryType = .none
+        }
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 

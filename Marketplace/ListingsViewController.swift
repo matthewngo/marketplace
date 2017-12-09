@@ -11,11 +11,13 @@ import UIKit
 class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
 
     var ref: DatabaseReference?
     var itemCount: Int = 0
     var items: [String:Any]?
     var descriptions: [String:Any]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
