@@ -33,6 +33,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     @IBOutlet weak var descriptionField: UITextField!
     
     var itemCondition: String = "New"
+    var itemCategory: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
         item.child("price").setValue(price.text)
         item.child("bestOffer").setValue(on)
         item.child("description").setValue(descriptionField.text)
+        item.child("category").setValue(itemCategory)
         item.child("imageURL").setValue(downloadURL?.absoluteString)
     }
 
@@ -142,6 +144,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
         let currCategory = categoryArray[indexPath.row]
         if currCategory.accessoryType == .none {
             currCategory.accessoryType = .checkmark
+            itemCategory = (currCategory.textLabel?.text)!
             for category in categoryArray {
                 if category != currCategory {
                     category.accessoryType = .none
