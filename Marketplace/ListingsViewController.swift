@@ -32,9 +32,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.items = userName["items"] as? [String: Any]
                 self.itemCount = self.items!.count
                 for key in self.items!.keys {
-                    //print(key)
                     self.descriptions = self.items![key] as? [String:Any]
-                    //print(self.descriptions!)
                 }
             }
             
