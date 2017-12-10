@@ -17,7 +17,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     var itemCount: Int = 0
     var items: [String:Any]?
     var descriptions: [String:Any]?
-    
+    var selectedItem: NSDictionary = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +75,24 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func getItem(path:Int) -> NSDictionary {
+        var count = 0
+        var dictionary: NSDictionary = [:]
+        for (key, info) in self.items! {
+            if (count == path) {
+                return info as! NSDictionary
+            } else {
+                count = count + 1
+            }
+        }
+        return [:]
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "PopoverSegue") {
             //print(table)
@@ -90,20 +103,22 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         if (segue.identifier == "itemView") {
             let controller = segue.destination as! ItemViewController
             let currentPath = self.tableView.indexPathForSelectedRow!
-            print(currentPath[1])
-            self.items!.forEach { print($1) }
-            
+            print("selected index: \(currentPath[1])")
+           // self.items!.forEach { print($1) }
+            selectedItem = getItem(path:currentPath[1])
+            print(selectedItem)
+            controller.itemDescription = selectedItem
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "itemView", sender:self)
-        
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
     }
+    
 
     /*
     // MARK: - Navigation

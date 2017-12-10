@@ -9,10 +9,13 @@
 import UIKit
 
 class ItemViewController: UIViewController {
-
+    var itemDescription: NSDictionary = [:]
+    
+    @IBOutlet weak var aboutTest: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let value = itemDescription["title"] as! String
+        aboutTest.text = value
         // Do any additional setup after loading the view.
     }
 

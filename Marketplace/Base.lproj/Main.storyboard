@@ -836,9 +836,26 @@
                     <view key="view" contentMode="scaleToFill" id="QV7-ZH-pOX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i64-Kg-TlQ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i64-Kg-TlQ" firstAttribute="leading" secondItem="Mlf-2y-0iv" secondAttribute="leading" id="Jaq-wG-hfY"/>
+                            <constraint firstItem="i64-Kg-TlQ" firstAttribute="top" secondItem="Mlf-2y-0iv" secondAttribute="top" id="YK5-gx-H15"/>
+                            <constraint firstItem="Mlf-2y-0iv" firstAttribute="trailing" secondItem="i64-Kg-TlQ" secondAttribute="trailing" id="wBp-gj-jUS"/>
+                            <constraint firstItem="Mlf-2y-0iv" firstAttribute="bottom" secondItem="i64-Kg-TlQ" secondAttribute="bottom" id="zJa-9K-gqW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Mlf-2y-0iv"/>
                     </view>
+                    <connections>
+                        <outlet property="aboutTest" destination="i64-Kg-TlQ" id="jC4-47-fTB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6h1-i1-Sit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
