@@ -86,7 +86,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         navTitle.title = titleText
         fullTitle.text = titleText
-        price.text = priceText
+        price.text = "$\(priceText)"
         if !bestOffer! {
             bestOfferLabel.isHidden = true
         } else {
@@ -137,17 +137,38 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "reuseIdentifier")
         }
-       if indexPath.section == 0 {
-           cell?.textLabel?.text = condition
-           if conComment != ""  {
-            cell?.detailTextLabel?.numberOfLines = 0;
-            //cell?.detailTextLabel?.text = "Comment: \(conComment!)"
-          }
-       } else if indexPath.section == 1 {
-            cell?.textLabel?.numberOfLines = 0;
-            cell?.textLabel?.text = desc
-        } else {
-            cell?.textLabel?.text = cat
+        if id != "" {
+            ref = Database.database().reference()
+            ref?.child("items").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                if indexPath.section == 0 {
+                    cell?.textLabel?.text =  value!["condition"] as? String
+                    if value!["conditionComment"] as? String != ""  {
+                        cell?.detailTextLabel?.numberOfLines = 0;
+                        cell?.detailTextLabel?.text = "Comment: \(value!["conditionComment"] as? String)"
+                    }
+                } else if indexPath.section == 1 {
+                    cell?.textLabel?.numberOfLines = 0;
+                    cell?.textLabel?.text = value!["description"] as? String
+                } else {
+                    cell?.textLabel?.text = value!["category"] as? String
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+       } else {
+           if indexPath.section == 0 {
+               cell?.textLabel?.text = condition
+               if conComment != ""  {
+                cell?.detailTextLabel?.numberOfLines = 0;
+                cell?.detailTextLabel?.text = "Comment: \(conComment)"
+              }
+           } else if indexPath.section == 1 {
+                cell?.textLabel?.numberOfLines = 0;
+                cell?.textLabel?.text = desc
+            } else {
+                cell?.textLabel?.text = cat
+            }
         }
         return cell!
     }
