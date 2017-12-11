@@ -11,7 +11,6 @@ import Firebase
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
-    
     var aboutData = [String]()
     var database = [String:Any]()
     var items: [String:Any]?
@@ -19,7 +18,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     var itemCount: Int = 0
     var currentUser: String = ""
     var ref:DatabaseReference?
-    
+    var userItems: [String: Any] = [:]
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var classYear: UILabel!
     @IBOutlet weak var about: UILabel!
@@ -39,11 +38,20 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 for key in self.items!.keys {
                     self.descriptions = self.items![key] as? [String:Any]
                 }
+                
+                for (key, value) in self.items! {
+                    var values = value as? [String:Any]
+                    let email = values!["email"]
+                    if (email as! String == self.currentUser) {
+                        self.userItems[key] = value
+                    }
+                }
             // Do any additional setup after loading the view.
             }
         })
         tableView.delegate = self
         tableView.dataSource = self
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,26 +64,24 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemCount
+        return userItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-        var iter = items!.keys.makeIterator()
+        var iter = userItems.keys.makeIterator()
         var next:String = ""
         for _ in 0 ... indexPath.row {
             next = iter.next()!
         }
-        descriptions = items![next] as? [String:Any]
-        if(descriptions!["email"] as! String == self.currentUser) {
+        descriptions = userItems[next] as? [String:Any]
         cell.textLabel!.text = descriptions!["title"]! as? String
         let details: String = (descriptions!["price"]! as? String)!
         cell.detailTextLabel?.text = "$\(details)"
-        }
         return cell
     }
     
-     
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "yourItemView", sender:self)

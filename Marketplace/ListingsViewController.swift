@@ -11,8 +11,7 @@ import UIKit
 class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    
-
+ 
     var ref: DatabaseReference?
     var itemCount: Int = 0
     var items: [String:Any]?
@@ -91,12 +90,14 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         return [:]
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "PopoverSegue") {
             //print(table)
             let popover = segue.destination
             popover.modalPresentationStyle = UIModalPresentationStyle.popover
             popover.popoverPresentationController?.delegate = self
+            
         }
         if (segue.identifier == "itemView") {
             let controller = segue.destination as! ItemViewController
