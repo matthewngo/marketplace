@@ -11,6 +11,7 @@ import Firebase
 import FirebaseStorage
 
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var id: String = ""
     var itemDescription: NSDictionary = [:]
     var ref: DatabaseReference?
     var sections = ["Condition", "Description", "Category"]
@@ -25,6 +26,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var sellerBtn: UIButton!
     
     override func viewDidLoad() {
+        print(id)
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self

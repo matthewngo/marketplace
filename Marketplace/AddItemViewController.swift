@@ -14,7 +14,6 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     var ref: DatabaseReference?
     var seller: String?
     var downloadURL: URL?
-    
     @IBOutlet weak var booksCategory: UITableViewCell!
     @IBOutlet weak var clothingCategory: UITableViewCell!
     @IBOutlet weak var furnitureCategory: UITableViewCell!
@@ -22,8 +21,9 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     @IBOutlet weak var ticketCategory: UITableViewCell!
     @IBOutlet weak var otherCategory: UITableViewCell!
     var categoryArray: [UITableViewCell] = []
- 
+    var complete = false
     
+    var id: String = ""
     @IBOutlet weak var itemImage: UIButton!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -31,7 +31,8 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     @IBOutlet weak var price: UITextField!
     @IBOutlet weak var bestOfferSwitch: UISwitch!
     @IBOutlet weak var descriptionField: UITextField!
-    
+
+    var currentUser: String = ""
     var itemCondition: String = "New"
     var itemCategory: String = ""
     
@@ -57,7 +58,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     @IBAction func submitBtnPressed(_ sender: Any) {
         ref = Database.database().reference()
         let itemsRef = Database.database().reference(withPath: "items")
-        let item = itemsRef.childByAutoId()
+        
         var on = true
         if bestOfferSwitch.isOn {
             on = true
@@ -68,19 +69,32 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
             if !snapshot.exists() { return }
             if let userName = snapshot.value as? [String:Any] {
                 let user = userName["currentUser"] as? [String:Any]
-                let currentUser = user!["email"] as! String
-                item.child("email").setValue(currentUser)
+                self.currentUser = user!["email"] as! String
             }
         })
-        item.child("title").setValue(titleField.text)
-        checkCondition()
-        item.child("condition").setValue(itemCondition)
-        item.child("conditionComment").setValue(commentField.text)
-        item.child("price").setValue(price.text)
-        item.child("bestOffer").setValue(on)
-        item.child("description").setValue(descriptionField.text)
-        item.child("category").setValue(itemCategory)
-        item.child("imageURL").setValue(downloadURL?.absoluteString)
+        if titleField.text == "" || price.text == "" || itemCategory == "" {
+            print("Working")
+        } else {
+            complete = true
+            let item = itemsRef.childByAutoId()
+            item.child("email").setValue(currentUser)
+            item.child("title").setValue(titleField.text)
+            checkCondition()
+            item.child("condition").setValue(itemCondition)
+            item.child("conditionComment").setValue(commentField.text)
+            item.child("price").setValue(price.text)
+            item.child("bestOffer").setValue(on)
+            item.child("description").setValue(descriptionField.text)
+            item.child("category").setValue(itemCategory)
+            item.child("imageURL").setValue(downloadURL?.absoluteString)
+        }
+        if complete {
+            let newItemRef = self.ref!
+                .child("items")
+                .childByAutoId()
+            id = newItemRef.key
+            self.performSegue(withIdentifier: "submitSegue", sender: self)
+        }
     }
 
     func checkCondition() {
@@ -138,6 +152,11 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
             self.downloadURL = metadata.downloadURL()!
             print(self.downloadURL!)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destVC : ItemViewController = segue.destination as! ItemViewController
+        destVC.id = id
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

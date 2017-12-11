@@ -656,6 +656,7 @@
                         <outlet property="techCategory" destination="H8c-U5-D1q" id="2N3-04-euL"/>
                         <outlet property="ticketCategory" destination="b0C-Vv-ccG" id="r2w-UB-xkJ"/>
                         <outlet property="titleField" destination="vLp-A9-IG1" id="PKO-p7-BBD"/>
+                        <segue destination="ajO-Bi-Ovk" kind="show" identifier="submitSegue" id="BAD-hD-8xI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XIX-A8-thQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -797,27 +798,11 @@
                         <outlet property="classYear" destination="RN3-B4-REl" id="d81-xk-7yL"/>
                         <outlet property="name" destination="RAX-fA-AaG" id="ilN-cZ-KHu"/>
                         <outlet property="tableView" destination="las-lb-iKd" id="SU2-Xz-GWa"/>
-                        <segue destination="UDt-fJ-AFD" kind="show" identifier="yourItemView" id="ZmC-N6-UvR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yO-sz-oTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="817" y="716"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tf6-4O-uJY">
-            <objects>
-                <viewController id="UDt-fJ-AFD" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mlZ-G2-hgf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="h52-XP-0aK"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ciu-bB-O5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="817" y="1430"/>
         </scene>
         <!--ItemViewController-->
         <scene sceneID="J9i-tt-hj6">
@@ -1070,33 +1055,6 @@
             </objects>
             <point key="canvasLocation" x="56" y="713.3433283358321"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="hu0-mC-sZI">
-            <objects>
-                <tableViewController id="Qt1-Fu-d2w" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dtg-kq-oeN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="n0I-MG-rx9">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n0I-MG-rx9" id="nYp-IO-3pk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Qt1-Fu-d2w" id="cRK-a5-6qe"/>
-                            <outlet property="delegate" destination="Qt1-Fu-d2w" id="aLa-Mz-w8q"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pov-6Q-aFa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="Camera" width="101" height="101"/>
@@ -1106,4 +1064,7 @@
         <image name="messages_icon" width="19" height="17"/>
         <image name="profile_icon" width="14" height="15"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BAD-hD-8xI"/>
+    </inferredMetricsTieBreakers>
 </document>
