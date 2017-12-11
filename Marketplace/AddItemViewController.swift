@@ -11,9 +11,11 @@ import Firebase
 import FirebaseStorage
 
 class AddItemViewController: UITableViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var ref: DatabaseReference?
     var seller: String?
     var downloadURL: URL?
+    
     @IBOutlet weak var booksCategory: UITableViewCell!
     @IBOutlet weak var clothingCategory: UITableViewCell!
     @IBOutlet weak var furnitureCategory: UITableViewCell!
@@ -24,6 +26,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     var complete = false
     
     var id: String = ""
+    
     @IBOutlet weak var itemImage: UIButton!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -93,6 +96,9 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
                 .child("items")
                 .childByAutoId()
             id = newItemRef.key
+            let profileRef = Database.database().reference(withPath: "profiles")
+            let profileItemsRef = profileRef.child(appDelegate.globalEmail).child("items")
+            profileItemsRef.child(id).setValue(titleField.text)
             self.performSegue(withIdentifier: "submitSegue", sender: self)
         }
     }

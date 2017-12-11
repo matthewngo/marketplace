@@ -30,27 +30,31 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        if itemDescription["imageURL"] as! String != ""  {
-            let url = itemDescription["imageURL"]
-            downloadImage(url: url as! String) // compressing image, still need to fix
-            //itemImg.clipsToBounds = true
-            //itemImg.contentMode = .scaleAspectFill
+        if id != "" {
+            
         } else {
-            itemImg.image = UIImage(named: "Camera")
+            if itemDescription["imageURL"] as! String != ""  {
+                let url = itemDescription["imageURL"]
+                downloadImage(url: url as! String) // compressing image, still need to fix
+                //itemImg.clipsToBounds = true
+                //itemImg.contentMode = .scaleAspectFill
+            } else {
+                itemImg.image = UIImage(named: "Camera")
+            }
+            let title = itemDescription["title"] as! String
+            navTitle.title = title
+            fullTitle.text = title
+            price.text = "$\(itemDescription["price"] as! String)"
+            let bestOffer = itemDescription["bestOffer"] as! Bool
+            if !bestOffer {
+                bestOfferLabel.isHidden = true
+            } else {
+                bestOfferLabel.isHidden = false
+            }
+            seller.text = itemDescription["email"] as! String
+            sellerBtn.layer.cornerRadius = 7
+            sellerBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10) // top, left, bottom, right
         }
-        let title = itemDescription["title"] as! String
-        navTitle.title = title
-        fullTitle.text = title
-        price.text = "$\(itemDescription["price"] as! String)"
-        let bestOffer = itemDescription["bestOffer"] as! Bool
-        if !bestOffer {
-            bestOfferLabel.isHidden = true
-        } else {
-            bestOfferLabel.isHidden = false
-        }
-        seller.text = itemDescription["email"] as! String
-        sellerBtn.layer.cornerRadius = 7
-        sellerBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10) // top, left, bottom, right
     }
     
     public func downloadImage(url: String) {
@@ -94,17 +98,17 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "reuseIdentifier")
         }
-        if indexPath.section == 0 {
-            cell?.textLabel?.text = itemDescription["condition"] as! String
-            if itemDescription["conditionComment"] as! String != ""  {
-                cell?.detailTextLabel?.text = "Comment: \(itemDescription["conditionComment"] as! String)"
-            }
-        } else if indexPath.section == 1 {
-            cell?.textLabel?.text = itemDescription["description"] as! String
-        } else {
-            cell?.textLabel?.text = itemDescription["category"] as! String
-        }
-        
+//        if indexPath.section == 0 {
+//            cell?.textLabel?.text = itemDescription["condition"] as! String
+//            if itemDescription["conditionComment"] as! String != ""  {
+//                cell?.detailTextLabel?.text = "Comment: \(itemDescription["conditionComment"] as! String)"
+//            }
+//        } else if indexPath.section == 1 {
+//            cell?.textLabel?.text = itemDescription["description"] as! String
+//        } else {
+//            cell?.textLabel?.text = itemDescription["category"] as! String
+//        }
+
         return cell!
     }
     
