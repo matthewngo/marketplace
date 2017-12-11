@@ -58,6 +58,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.condition = value!["condition"] as? String
                 self.conComment = value!["conditionComment"] as? String
                 self.sellerText = value!["seller"] as? String
+                self.addContent()
             }) { (error) in
                 print(error.localizedDescription)
             }
@@ -71,7 +72,11 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.condition = itemDescription["condition"] as? String
             self.conComment = itemDescription["conditionComment"] as? String
             self.sellerText = itemDescription["seller"] as? String
+            addContent()
         }
+    }
+    
+    func addContent() {
         if imgUrl != ""  {
             downloadImage(url: (imgUrl)) // compressing image, still need to fix
             //itemImg.clipsToBounds = true
@@ -82,16 +87,15 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navTitle.title = titleText
         fullTitle.text = titleText
         price.text = priceText
-        /*if !bestOffer! {
+        if !bestOffer! {
             bestOfferLabel.isHidden = true
         } else {
             bestOfferLabel.isHidden = false
-        }*/
+        }
         seller.text = sellerText
         sellerBtn.layer.cornerRadius = 7
         sellerBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10) // top, left, bottom, right
     }
-    
     public func downloadImage(url: String) {
         let imgUrl = URL(string: url)
         DispatchQueue.main.async {
