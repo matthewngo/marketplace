@@ -7,6 +7,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -821,20 +822,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="osW-Gw-UMu">
-                                <rect key="frame" x="137" y="80" width="101" height="101"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="osW-Gw-UMu">
+                                <rect key="frame" x="112.5" y="80" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="osW-Gw-UMu" secondAttribute="height" multiplier="1:1" id="2J6-ir-jbp"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SU5-VQ-1PI">
-                                <rect key="frame" x="39" y="197" width="297" height="24"/>
+                                <rect key="frame" x="39" y="246" width="297" height="24"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6n2-V2-1jq" userLabel="Price Stack View">
-                                <rect key="frame" x="39" y="231" width="135" height="20.5"/>
+                                <rect key="frame" x="39" y="280" width="135" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-Oh-In4">
                                         <rect key="frame" x="0.0" y="0.0" width="66.5" height="20.5"/>
@@ -851,7 +852,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dws-nV-6uw" userLabel="Seller Stack View">
-                                <rect key="frame" x="39" y="261.5" width="176" height="25"/>
+                                <rect key="frame" x="39" y="310.5" width="176" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igv-0O-srN">
                                         <rect key="frame" x="0.0" y="0.0" width="33" height="25"/>
@@ -892,14 +893,14 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSR-nC-iEj">
-                                <rect key="frame" x="135" y="311.5" width="105" height="30"/>
+                                <rect key="frame" x="135" y="360.5" width="105" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.2074289939" blue="0.4300444162" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Message Seller">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aCP-Kb-1iv">
-                                <rect key="frame" x="0.0" y="366.5" width="375" height="251.5"/>
+                                <rect key="frame" x="0.0" y="415.5" width="375" height="202.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -911,6 +912,7 @@
                             <constraint firstItem="osW-Gw-UMu" firstAttribute="top" secondItem="Mlf-2y-0iv" secondAttribute="top" constant="16" id="91v-4W-nSS"/>
                             <constraint firstItem="aCP-Kb-1iv" firstAttribute="leading" secondItem="Mlf-2y-0iv" secondAttribute="leading" id="DjO-Tg-0E9"/>
                             <constraint firstItem="6n2-V2-1jq" firstAttribute="leading" secondItem="Mlf-2y-0iv" secondAttribute="leading" constant="39" id="QNJ-M2-pdP"/>
+                            <constraint firstItem="osW-Gw-UMu" firstAttribute="width" secondItem="QV7-ZH-pOX" secondAttribute="width" multiplier="0.4" id="S6T-Zj-o8U"/>
                             <constraint firstItem="SU5-VQ-1PI" firstAttribute="leading" secondItem="Mlf-2y-0iv" secondAttribute="leading" constant="39" id="Tp1-B1-tgu"/>
                             <constraint firstItem="Mlf-2y-0iv" firstAttribute="trailing" secondItem="SU5-VQ-1PI" secondAttribute="trailing" constant="39" id="bUG-Lb-XEs"/>
                             <constraint firstItem="6n2-V2-1jq" firstAttribute="top" secondItem="SU5-VQ-1PI" secondAttribute="bottom" constant="10" id="f7b-q9-Mrl"/>
@@ -927,6 +929,7 @@
                     <connections>
                         <outlet property="bestOfferLabel" destination="mZg-wF-BDW" id="rZm-vG-n37"/>
                         <outlet property="fullTitle" destination="SU5-VQ-1PI" id="Kkm-za-wTh"/>
+                        <outlet property="itemImg" destination="osW-Gw-UMu" id="Siu-p6-u0L"/>
                         <outlet property="navTitle" destination="Wnt-FI-LlV" id="r9M-Vt-n3o"/>
                         <outlet property="price" destination="E9g-Oh-In4" id="5Gd-jS-5VJ"/>
                         <outlet property="seller" destination="Igv-0O-srN" id="0K7-ZS-2RJ"/>
