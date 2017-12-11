@@ -58,6 +58,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.condition = value!["condition"] as? String
                 self.conComment = value!["conditionComment"] as? String
                 self.sellerText = value!["seller"] as? String
+                self.addContent()
             }) { (error) in
                 print(error.localizedDescription)
             }
@@ -71,7 +72,11 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.condition = itemDescription["condition"] as? String
             self.conComment = itemDescription["conditionComment"] as? String
             self.sellerText = itemDescription["seller"] as? String
+            addContent()
         }
+    }
+    
+    func addContent() {
         if imgUrl != ""  {
             downloadImage(url: (imgUrl)) // compressing image, still need to fix
             //itemImg.clipsToBounds = true
@@ -81,17 +86,16 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         navTitle.title = titleText
         fullTitle.text = titleText
-        price.text = priceText
-        /*if !bestOffer! {
+        price.text = "$\(priceText)"
+        if !bestOffer! {
             bestOfferLabel.isHidden = true
         } else {
             bestOfferLabel.isHidden = false
-        }*/
+        }
         seller.text = sellerText
         sellerBtn.layer.cornerRadius = 7
         sellerBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10) // top, left, bottom, right
     }
-    
     public func downloadImage(url: String) {
         let imgUrl = URL(string: url)
         DispatchQueue.main.async {
@@ -133,17 +137,38 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if cell == nil {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "reuseIdentifier")
         }
-       if indexPath.section == 0 {
-           cell?.textLabel?.text = condition
-           if conComment != ""  {
-            cell?.detailTextLabel?.numberOfLines = 0;
-            //cell?.detailTextLabel?.text = "Comment: \(conComment!)"
-          }
-       } else if indexPath.section == 1 {
-            cell?.textLabel?.numberOfLines = 0;
-            cell?.textLabel?.text = desc
-        } else {
-            cell?.textLabel?.text = cat
+        if id != "" {
+            ref = Database.database().reference()
+            ref?.child("items").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                if indexPath.section == 0 {
+                    cell?.textLabel?.text =  value!["condition"] as? String
+                    if value!["conditionComment"] as? String != ""  {
+                        cell?.detailTextLabel?.numberOfLines = 0;
+                        cell?.detailTextLabel?.text = "Comment: \(value!["conditionComment"] as? String)"
+                    }
+                } else if indexPath.section == 1 {
+                    cell?.textLabel?.numberOfLines = 0;
+                    cell?.textLabel?.text = value!["description"] as? String
+                } else {
+                    cell?.textLabel?.text = value!["category"] as? String
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+       } else {
+           if indexPath.section == 0 {
+               cell?.textLabel?.text = condition
+               if conComment != ""  {
+                cell?.detailTextLabel?.numberOfLines = 0;
+                cell?.detailTextLabel?.text = "Comment: \(conComment)"
+              }
+           } else if indexPath.section == 1 {
+                cell?.textLabel?.numberOfLines = 0;
+                cell?.textLabel?.text = desc
+            } else {
+                cell?.textLabel?.text = cat
+            }
         }
         return cell!
     }

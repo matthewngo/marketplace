@@ -11,6 +11,7 @@ import Firebase
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var aboutData = [String]()
     var database = [String:Any]()
     var items: [String:Any]?
@@ -29,10 +30,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         ref = Database.database().reference()
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             if !snapshot.exists() { return }
-        
+            self.currentUser = self.appDelegate.globalEmail
             if let userName = snapshot.value as? [String:Any] {
                 let email = userName["currentUser"] as? [String:Any]
-                self.currentUser = (email!["email"] as? String)!
+                //self.currentUser = (email!["email"] as? String)!
                 self.items = userName["items"] as? [String: Any]
                 self.itemCount = self.items!.count
                 for key in self.items!.keys {
@@ -41,8 +42,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 for (key, value) in self.items! {
                     var values = value as? [String:Any]
-                    let email = values!["email"]
-                    if (email as! String == self.currentUser) {
+                    let seller = values!["seller"]
+                    if (seller as! String == self.currentUser) {
                         self.userItems[key] = value
                     }
                 }
