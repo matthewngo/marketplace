@@ -14,7 +14,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var id: String = ""
     var itemDescription: NSDictionary = [:]
     var ref: DatabaseReference?
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var sections = ["Condition", "Description", "Category"]
     
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +33,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var cat: String?
     var condition: String?
     var conComment: String?
+    var sellerText: String?
     
     override func viewDidLoad() {
         print(id)
@@ -46,13 +46,15 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // Get user value
                 let value = snapshot.value as? NSDictionary
                 self.titleText = value!["title"] as? String
-                self.priceText = value!["title"] as? String
+                self.priceText = value!["price"] as? String
+                print(self.priceText)
                 self.imgUrl = (value!["imageURL"] as? String)!
                 self.bestOffer = value!["bestOffer"] as? Bool
                 self.desc = value!["description"] as? String
                 self.cat = value!["category"] as? String
                 self.condition = value!["condition"] as? String
                 self.conComment = value!["conditionComment"] as? String
+                self.sellerText = value!["seller"] as? String
             }) { (error) in
                 print(error.localizedDescription)
             }
@@ -65,6 +67,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.cat = itemDescription["category"] as? String
             self.condition = itemDescription["condition"] as? String
             self.conComment = itemDescription["conditionComment"] as? String
+            self.sellerText = itemDescription["seller"] as? String
         }
         if imgUrl != ""  {
             downloadImage(url: (imgUrl)) // compressing image, still need to fix
@@ -81,7 +84,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             bestOfferLabel.isHidden = false
         }
-        seller.text = appDelegate.globalEmail
+        seller.text = sellerText
         sellerBtn.layer.cornerRadius = 7
         sellerBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10) // top, left, bottom, right
     }

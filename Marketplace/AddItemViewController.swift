@@ -81,7 +81,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
         } else {
             complete = true
             let item = itemsRef.childByAutoId()
-            item.child("email").setValue(currentUser)
+            item.child("seller").setValue(appDelegate.globalEmail)
             item.child("title").setValue(titleField.text)
             checkCondition()
             item.child("condition").setValue(itemCondition)
@@ -165,6 +165,9 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "itemSegue") {
             let destVC : ItemViewController = segue.destination as! ItemViewController
+            destVC.id = id
+        } else if (segue.identifier == "submitSegue") {
+            let destVC: ItemViewController = segue.destination as! ItemViewController
             destVC.id = id
         }
     }
