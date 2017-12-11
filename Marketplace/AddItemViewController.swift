@@ -118,7 +118,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let img = info[UIImagePickerControllerOriginalImage] {
             itemImage.setImage(img as? UIImage, for: UIControlState.normal)
-            itemImage.imageView?.contentMode = UIViewContentMode.scaleAspectFit;
+            itemImage.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         }
         picker.dismiss(animated: true, completion: nil)
         uploadImage()
