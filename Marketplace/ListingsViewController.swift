@@ -29,10 +29,18 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             
             if let userName = snapshot.value as? [String:Any] {
                 self.items = userName["items"] as? [String: Any]
-                self.itemCount = self.items!.count
-                for key in self.items!.keys {
-                    self.descriptions = self.items![key] as? [String:Any]
+                //print(self.items!.count)
+                if(self.items == nil) {
+                    self.itemCount = 0
+                } else {
+                    self.itemCount = self.items!.count
+                    for key in self.items!.keys {
+                        self.descriptions = self.items![key] as? [String:Any]
+                    }
                 }
+                
+               
+               
             }
             
             // can also use
