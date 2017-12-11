@@ -15,6 +15,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
     var ref: DatabaseReference?
     var seller: String?
     var downloadURL: URL?
+    var finalUrl: String = ""
     
     @IBOutlet weak var booksCategory: UITableViewCell!
     @IBOutlet weak var clothingCategory: UITableViewCell!
@@ -89,7 +90,7 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
             item.child("bestOffer").setValue(on)
             item.child("description").setValue(descriptionField.text)
             item.child("category").setValue(itemCategory)
-            item.child("imageURL").setValue(downloadURL?.absoluteString)
+            item.child("imageURL").setValue(finalUrl)
         }
         if complete {
             let newItemRef = self.ref!
@@ -156,13 +157,16 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
                 return
             }
             self.downloadURL = metadata.downloadURL()!
+            self.finalUrl = (self.downloadURL?.absoluteString)!
             print(self.downloadURL!)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destVC : ItemViewController = segue.destination as! ItemViewController
-        destVC.id = id
+        if (segue.identifier == "itemSegue") {
+            let destVC : ItemViewController = segue.destination as! ItemViewController
+            destVC.id = id
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -178,8 +182,6 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
         } else {
             currCategory.accessoryType = .none
         }
-        
-        
     }
     
     /*
