@@ -91,12 +91,10 @@ class AddItemViewController: UITableViewController,UIImagePickerControllerDelega
             item.child("description").setValue(descriptionField.text)
             item.child("category").setValue(itemCategory)
             item.child("imageURL").setValue(finalUrl)
+            id = item.key
+            print(id)
         }
         if complete {
-            let newItemRef = self.ref!
-                .child("items")
-                .childByAutoId()
-            id = newItemRef.key
             let profileRef = Database.database().reference(withPath: "profiles")
             let profileItemsRef = profileRef.child(appDelegate.globalEmail).child("items")
             profileItemsRef.child(id).setValue(titleField.text)

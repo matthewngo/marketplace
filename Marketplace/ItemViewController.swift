@@ -36,15 +36,18 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var sellerText: String?
     
     override func viewDidLoad() {
-        print(id)
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         if id != "" {
+            print(id)
             ref = Database.database().reference()
+            //print(ref?.child("items").child(id))
             ref?.child("items").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
+                print("testing")
                 let value = snapshot.value as? NSDictionary
+                print(value)
                 self.titleText = value!["title"] as? String
                 self.priceText = value!["price"] as? String
                 print(self.priceText)
@@ -78,12 +81,12 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         navTitle.title = titleText
         fullTitle.text = titleText
-        price.text = "$\(priceText!)"
-        if !bestOffer! {
+        price.text = priceText
+        /*if !bestOffer! {
             bestOfferLabel.isHidden = true
         } else {
             bestOfferLabel.isHidden = false
-        }
+        }*/
         seller.text = sellerText
         sellerBtn.layer.cornerRadius = 7
         sellerBtn.contentEdgeInsets = UIEdgeInsetsMake(6, 10, 6, 10) // top, left, bottom, right
@@ -134,7 +137,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
            cell?.textLabel?.text = condition
            if conComment != ""  {
             cell?.detailTextLabel?.numberOfLines = 0;
-            cell?.detailTextLabel?.text = "Comment: \(conComment!)"
+            //cell?.detailTextLabel?.text = "Comment: \(conComment!)"
           }
        } else if indexPath.section == 1 {
             cell?.textLabel?.numberOfLines = 0;
