@@ -939,6 +939,7 @@
                         <outlet property="price" destination="E9g-Oh-In4" id="5Gd-jS-5VJ"/>
                         <outlet property="seller" destination="Igv-0O-srN" id="0K7-ZS-2RJ"/>
                         <outlet property="sellerBtn" destination="MSR-nC-iEj" id="OHG-5L-hif"/>
+                        <outlet property="tableView" destination="aCP-Kb-1iv" id="2NA-1S-jvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6h1-i1-Sit" userLabel="First Responder" sceneMemberID="firstResponder"/>
