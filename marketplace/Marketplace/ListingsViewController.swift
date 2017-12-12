@@ -10,27 +10,20 @@ import UIKit
 
 class ListingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView1: UITableView!
-    @IBOutlet weak var tableView2: UITableView!
     
     var ref: DatabaseReference?
     var itemCount: Int = 0
     var items: [String:Any]?
     var descriptions: [String:Any]?
     var selectedItem: NSDictionary = [:]
-    var categories = ["Books", "Clothing", "Furniture", "Technology", "Tickets", "Other"]
-    var s1: UISwitch = UISwitch()
-    var s2: UISwitch = UISwitch()
-    var s3: UISwitch = UISwitch()
-    var s4: UISwitch = UISwitch()
-    var s5: UISwitch = UISwitch()
-    var s0: UISwitch = UISwitch()
     
-    var switches: [UISwitch] = []
-    
+    @IBOutlet weak var bookButton: UIButton!
+    @IBOutlet weak var bookButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        switches = [s0, s1, s2, s3, s4, s5]
         ref = Database.database().reference()
         ref?.observeSingleEvent(of: .value, with: { snapshot in
             
@@ -55,11 +48,11 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
             // snapshot.childSnapshotForPath("full_name").value as! String
         })
         tableView1.delegate = self
+        @IBOutlet weak var bookButton: UIButton!
+        @IBOutlet weak var bookButton: UIButton!
         tableView1.dataSource = self
-        tableView2 = UITableView()
-        print(tableView2)
-        //tableView2.delegate = self
-        //tableView2.dataSource = self
+        @IBOutlet weak var button: UIButton!
+        @IBOutlet weak var bookButton: UIButton!
         // Do any additional setup after loading the view.
     }
 
@@ -70,11 +63,7 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == tableView2 {
-            return categories.count
-        } else {
-            return itemCount
-        }
+        return itemCount
     }
     
     @IBAction func unwindToListings(segue:UIStoryboardSegue) {
@@ -82,26 +71,19 @@ class ListingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == tableView2 {
-            let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-            cell.textLabel!.text = categories[indexPath.row]
-            cell.accessoryView = switches[indexPath.row]
-            return cell
-        } else {
-            let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
-            var iter = items!.keys.makeIterator()
-            var next:String = ""
-            for _ in 0 ... indexPath.row {
-                next = iter.next()!
-            }
-            descriptions = items![next] as? [String:Any]
-        //print(descriptions!["title"]! as? String)
-            cell.textLabel!.text = descriptions!["title"]! as? String
-            let details: String = (descriptions!["price"]! as? String)!
-            cell.detailTextLabel?.text = "$\(details)"
-        //cell.imageView?.image = image[indexPath.row]
-            return cell
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+        var iter = items!.keys.makeIterator()
+        var next:String = ""
+        for _ in 0 ... indexPath.row {
+            next = iter.next()!
         }
+        descriptions = items![next] as? [String:Any]
+        //print(descriptions!["title"]! as? String)
+        cell.textLabel!.text = descriptions!["title"]! as? String
+        let details: String = (descriptions!["price"]! as? String)!
+        cell.detailTextLabel?.text = "$\(details)"
+        //cell.imageView?.image = image[indexPath.row]
+        return cell
     }
     
     
